@@ -1,6 +1,5 @@
-package com.group.libraryapp
+package com.group.libraryapp.calculator
 
-import com.group.libraryapp.calculator.Calculator
 import java.lang.Exception
 
 fun main() {
