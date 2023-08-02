@@ -30,7 +30,7 @@ public class BookService {
 
   @Transactional
   public void saveBook(BookRequest request) {
-    Book newBook = new Book(request.getName());
+    Book newBook = new Book(request.getName(), null); // 자바에서 코틀린 코드를 호출할 때 디폴트 파라미터를 인식하지 못한다.
     bookRepository.save(newBook);
   }
 
