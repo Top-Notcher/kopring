@@ -25,10 +25,10 @@ class UserService constructor(
 
     @Transactional
     fun getUsers(): List<UserResponse> {
-//        return userRepository.findAll().map { user ->
-//            UserResponse(user)
-//        }
-        return userRepository.findAll().map(::UserResponse)
+        return userRepository.findAll().map { user ->
+            UserResponse.of(user)
+        }
+//        return userRepository.findAll().map(::UserResponse)
     }
 
     @Transactional
