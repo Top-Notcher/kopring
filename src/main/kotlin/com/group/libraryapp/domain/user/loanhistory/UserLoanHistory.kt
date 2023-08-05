@@ -10,7 +10,7 @@ class UserLoanHistory(
 
     val bookName: String,
 
-    var isReturn: Boolean,
+    var isReturn: Boolean = false,
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
