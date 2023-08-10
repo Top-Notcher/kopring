@@ -1,5 +1,9 @@
 package com.group.libraryapp.service.user
 
+import com.group.libraryapp.domain.book.Book
+import com.group.libraryapp.domain.book.BookRepository
+import com.group.libraryapp.domain.book.BookType
+import com.group.libraryapp.domain.book.BookType.*
 import com.group.libraryapp.domain.user.User
 import com.group.libraryapp.domain.user.UserRepository
 import com.group.libraryapp.domain.user.loanhistory.UserLoanHistory
@@ -18,7 +22,15 @@ import org.springframework.transaction.annotation.Transactional
 @Service
 class UserService constructor(
     private val userRepository: UserRepository,
+    private val bookRepository: BookRepository,
 ) {
+    @Transactional
+    fun saveUserAndLoanTwoBooks() {
+        val newUser = User("A", 123)
+        val books = bookRepository.saveAll(listOf(Book("책1", COMPUTER), Book("책2", COMPUTER)))
+        books.forEach { book -> newUser.loanBook(book) }    // UserLoanHistory 2개 생길겁니다!
+        userRepository.save(newUser)
+    }
 
     @Transactional
     fun saveUser(request: UserCreateRequest) {
