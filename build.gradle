@@ -46,3 +46,7 @@ compileTestKotlin {
         jvmTarget = "11"
     }
 }
+
+jar {
+    enabled = false
+}
